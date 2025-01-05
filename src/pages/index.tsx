@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Geist, Geist_Mono } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -14,6 +16,15 @@ const geistMono = Geist_Mono({
 })
 
 export default function Home() {
+  const router = useRouter()
+
+  const handleClick = () => {
+    router.push({
+      pathname: '/posts/[...slug]',
+      query: { slug: ['hello', 'world'], ref: 'home' },
+    })
+  }
+
   return (
     <>
       <Head>
@@ -32,6 +43,10 @@ export default function Home() {
             height={38}
             priority
           />
+          <Link href="/about" legacyBehavior>
+            <a>Go to About</a>
+          </Link>
+          <button onClick={handleClick}>Go to on Post Detail</button>
           <ol>
             <li>
               Get started by editing <code>src/pages/index.tsx</code>.
