@@ -6,7 +6,7 @@ export default function AboutPage() {
 
   console.log('About query:', router.query)
 
-  return <div>About Page</div>
+  return <div>About Pagee</div>
 }
 
 export function getServerSideProps() {
